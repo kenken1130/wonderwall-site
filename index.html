@@ -3,266 +3,443 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wonderwall Inc. — テクノロジーで、壁を超える。</title>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <title>ワンダーウォール株式会社 | Wonderwall Inc.</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --black: #0a0a0a;
-            --white: #ffffff;
-            --gray-50: #fafafa;
-            --gray-100: #f5f5f5;
-            --gray-200: #e5e5e5;
-            --gray-400: #a3a3a3;
-            --gray-500: #737373;
-            --gray-600: #525252;
-            --gray-800: #262626;
-            --gray-900: #171717;
-            --accent: #0F172A;
-            --blue: #2563EB;
+            --primary: #0066FF;
+            --primary-light: #3388FF;
+            --primary-bg: #F0F6FF;
+            --black: #1A1A1A;
+            --white: #FFFFFF;
+            --gray-50: #F8FAFC;
+            --gray-100: #F1F5F9;
+            --gray-200: #E2E8F0;
+            --gray-300: #CBD5E1;
+            --gray-400: #94A3B8;
+            --gray-500: #64748B;
+            --gray-600: #475569;
+            --gray-700: #334155;
+            --gray-800: #1E293B;
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+            --shadow-lg: 0 12px 40px rgba(0,0,0,0.1);
+            --radius: 16px;
         }
         *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
         html { scroll-behavior: smooth; }
         body {
             font-family: 'Noto Sans JP', 'Inter', -apple-system, sans-serif;
-            background: var(--white);
-            color: var(--gray-900);
-            line-height: 1.9;
-            -webkit-font-smoothing: antialiased;
+            background: var(--white); color: var(--gray-800);
+            line-height: 1.8; -webkit-font-smoothing: antialiased;
         }
-        .container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
-        section { padding: 100px 0; }
+        a { text-decoration: none; color: inherit; }
+        img { max-width: 100%; display: block; }
+
+        /* Container */
+        .container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
 
         /* Nav */
         nav {
-            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-            padding: 20px 0; background: rgba(255,255,255,0.95);
-            backdrop-filter: blur(16px); border-bottom: 1px solid var(--gray-100);
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            background: rgba(255,255,255,0.96); backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--gray-100); padding: 0 0;
         }
-        nav .container { display: flex; align-items: center; justify-content: space-between; }
+        .nav-inner {
+            max-width: 1120px; margin: 0 auto; padding: 16px 24px;
+            display: flex; align-items: center; justify-content: space-between;
+        }
         .nav-logo {
-            font-size: 18px; font-weight: 900; letter-spacing: 0.05em;
-            color: var(--gray-900); text-transform: uppercase;
+            font-size: 20px; font-weight: 900; color: var(--black);
+            display: flex; align-items: center; gap: 8px;
         }
-        .nav-links { display: flex; align-items: center; gap: 36px; }
+        .nav-logo .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--primary); }
+        .nav-links { display: flex; align-items: center; gap: 28px; }
         .nav-links a {
-            font-size: 13px; color: var(--gray-500); text-decoration: none;
-            font-weight: 500; letter-spacing: 0.05em; transition: color 0.2s;
+            font-size: 13px; font-weight: 600; color: var(--gray-500);
+            letter-spacing: 0.02em; transition: color 0.2s;
         }
-        .nav-links a:hover { color: var(--gray-900); }
+        .nav-links a:hover { color: var(--primary); }
+        .nav-contact {
+            font-size: 13px; font-weight: 700; color: var(--white) !important;
+            background: var(--primary); padding: 10px 24px; border-radius: 100px;
+            transition: all 0.2s;
+        }
+        .nav-contact:hover { background: var(--primary-light); transform: translateY(-1px); }
 
         /* Hero */
         .hero {
-            padding: 200px 0 120px; text-align: center;
-            background: linear-gradient(180deg, var(--gray-50) 0%, var(--white) 100%);
+            padding: 180px 0 100px;
+            background: linear-gradient(135deg, #F8FAFF 0%, #EEF4FF 50%, #F0F6FF 100%);
+            position: relative; overflow: hidden;
         }
-        .hero-label {
-            font-size: 12px; font-weight: 700; letter-spacing: 0.2em;
-            text-transform: uppercase; color: var(--gray-400); margin-bottom: 24px;
+        .hero::before {
+            content: ''; position: absolute; top: -50%; right: -20%;
+            width: 800px; height: 800px; border-radius: 50%;
+            background: radial-gradient(circle, rgba(0,102,255,0.06) 0%, transparent 70%);
         }
+        .hero-inner {
+            max-width: 1120px; margin: 0 auto; padding: 0 24px;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;
+            position: relative;
+        }
+        .hero-tag {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 8px 16px; border-radius: 100px;
+            background: var(--white); border: 1px solid var(--gray-200);
+            font-size: 13px; font-weight: 600; color: var(--primary);
+            margin-bottom: 24px; box-shadow: var(--shadow-sm);
+        }
+        .hero-tag .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--primary); }
         .hero h1 {
-            font-size: clamp(36px, 7vw, 64px); font-weight: 900;
-            line-height: 1.2; letter-spacing: -0.02em;
-            margin-bottom: 24px;
+            font-size: clamp(34px, 5.5vw, 52px); font-weight: 900;
+            line-height: 1.25; letter-spacing: -0.02em;
+            color: var(--black); margin-bottom: 20px;
         }
-        .hero p {
-            font-size: 17px; color: var(--gray-500); max-width: 520px;
-            margin: 0 auto; line-height: 1.9;
+        .hero h1 em { font-style: normal; color: var(--primary); }
+        .hero-desc {
+            font-size: 16px; color: var(--gray-500); line-height: 1.9; margin-bottom: 36px;
         }
+        .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+        .btn-primary {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 14px 32px; border-radius: 100px; font-size: 15px; font-weight: 700;
+            background: var(--primary); color: white; border: none; cursor: pointer;
+            transition: all 0.25s; box-shadow: 0 4px 16px rgba(0,102,255,0.25);
+        }
+        .btn-primary:hover { background: var(--primary-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,102,255,0.3); }
+        .btn-secondary {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 14px 32px; border-radius: 100px; font-size: 15px; font-weight: 600;
+            background: var(--white); color: var(--gray-700); border: 1px solid var(--gray-200);
+            transition: all 0.25s;
+        }
+        .btn-secondary:hover { border-color: var(--gray-400); transform: translateY(-1px); }
 
-        /* Mission */
-        .mission { background: var(--accent); color: white; text-align: center; }
-        .mission h2 { font-size: clamp(24px, 4vw, 36px); font-weight: 900; margin-bottom: 20px; line-height: 1.4; }
-        .mission p { font-size: 16px; color: rgba(255,255,255,0.6); max-width: 600px; margin: 0 auto; line-height: 2; }
+        .hero-visual {
+            position: relative; border-radius: 24px; overflow: hidden;
+            background: var(--white); box-shadow: var(--shadow-lg);
+            aspect-ratio: 4/3;
+        }
+        .hero-visual img { width: 100%; height: 100%; object-fit: cover; }
+        .hero-visual .overlay {
+            position: absolute; bottom: 0; left: 0; right: 0;
+            padding: 32px; background: linear-gradient(transparent, rgba(0,0,0,0.7));
+            color: white;
+        }
+        .hero-visual .overlay h3 { font-size: 18px; font-weight: 700; }
+        .hero-visual .overlay p { font-size: 13px; opacity: 0.8; margin-top: 4px; }
 
-        /* Business */
-        .business-grid {
-            display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px;
-            margin-top: 56px;
+        /* Stats bar */
+        .stats-bar {
+            padding: 48px 0; background: var(--white);
+            border-bottom: 1px solid var(--gray-100);
         }
-        .business-card {
-            padding: 48px 36px; border-radius: 16px;
-            background: var(--gray-50); border: 1px solid var(--gray-100);
-            transition: all 0.3s;
+        .stats-grid {
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px;
+            text-align: center;
         }
-        .business-card:hover { background: white; border-color: var(--gray-200); box-shadow: 0 8px 32px rgba(0,0,0,0.06); }
-        .business-tag {
-            display: inline-block; font-size: 11px; font-weight: 700;
-            letter-spacing: 0.1em; text-transform: uppercase;
-            color: var(--blue); margin-bottom: 16px;
-            padding: 4px 12px; background: rgba(37,99,235,0.06); border-radius: 4px;
+        .stat-item {}
+        .stat-num {
+            font-size: 36px; font-weight: 900; color: var(--primary);
+            font-family: 'Inter', sans-serif; letter-spacing: -0.02em;
         }
-        .business-card h3 { font-size: 22px; font-weight: 900; margin-bottom: 12px; }
-        .business-card p { font-size: 14px; color: var(--gray-500); line-height: 1.9; }
-        .business-link {
+        .stat-label { font-size: 13px; color: var(--gray-500); margin-top: 4px; font-weight: 500; }
+
+        /* Section */
+        .section { padding: 100px 0; }
+        .section-bg { background: var(--gray-50); }
+        .section-header { margin-bottom: 56px; }
+        .section-tag {
             display: inline-flex; align-items: center; gap: 6px;
-            margin-top: 20px; font-size: 14px; font-weight: 600;
-            color: var(--blue); text-decoration: none;
+            font-size: 12px; font-weight: 700; color: var(--primary);
+            letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 12px;
         }
-        .business-link:hover { text-decoration: underline; }
+        .section-tag .bar { width: 20px; height: 2px; background: var(--primary); border-radius: 1px; }
+        .section-title {
+            font-size: clamp(28px, 4vw, 40px); font-weight: 900;
+            line-height: 1.3; letter-spacing: -0.01em; color: var(--black);
+        }
+        .section-desc { font-size: 16px; color: var(--gray-500); margin-top: 12px; max-width: 560px; line-height: 1.9; }
+
+        /* Business Cards */
+        .biz-grid {
+            display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px;
+        }
+        .biz-card {
+            background: var(--white); border-radius: var(--radius);
+            border: 1px solid var(--gray-100); overflow: hidden;
+            transition: all 0.3s; cursor: pointer;
+        }
+        .biz-card:hover { border-color: var(--gray-200); box-shadow: var(--shadow-md); transform: translateY(-4px); }
+        .biz-card-img {
+            height: 200px; background: var(--primary-bg);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 56px; position: relative; overflow: hidden;
+        }
+        .biz-card-img.ai { background: linear-gradient(135deg, #EEF4FF, #E0ECFF); }
+        .biz-card-img.sport { background: linear-gradient(135deg, #ECFDF5, #D1FAE5); }
+        .biz-card-img.talent { background: linear-gradient(135deg, #FEF3C7, #FDE68A); }
+        .biz-card-img.community { background: linear-gradient(135deg, #FDE8E8, #FECACA); }
+        .biz-card-body { padding: 28px; }
+        .biz-tag {
+            display: inline-block; font-size: 11px; font-weight: 700;
+            letter-spacing: 0.08em; text-transform: uppercase;
+            padding: 4px 10px; border-radius: 6px; margin-bottom: 12px;
+        }
+        .biz-tag.ai { background: rgba(0,102,255,0.08); color: var(--primary); }
+        .biz-tag.sport { background: rgba(16,185,129,0.08); color: #059669; }
+        .biz-tag.talent { background: rgba(245,158,11,0.08); color: #D97706; }
+        .biz-tag.community { background: rgba(239,68,68,0.08); color: #DC2626; }
+        .biz-card-body h3 { font-size: 20px; font-weight: 800; margin-bottom: 8px; color: var(--black); }
+        .biz-card-body p { font-size: 14px; color: var(--gray-500); line-height: 1.8; }
+        .biz-link {
+            display: inline-flex; align-items: center; gap: 6px;
+            margin-top: 16px; font-size: 14px; font-weight: 700; color: var(--primary);
+        }
+        .biz-link:hover { gap: 10px; }
 
         /* Founder */
-        .founder-section { background: var(--gray-50); }
         .founder-grid {
-            display: grid; grid-template-columns: 240px 1fr; gap: 48px;
-            align-items: center; margin-top: 48px;
+            display: grid; grid-template-columns: 320px 1fr; gap: 56px; align-items: center;
         }
-        .founder-photo {
-            width: 240px; height: 300px; border-radius: 12px; overflow: hidden;
-            background: var(--gray-200);
+        .founder-img {
+            border-radius: 20px; overflow: hidden; aspect-ratio: 3/4;
+            background: var(--gray-100); box-shadow: var(--shadow-md);
         }
-        .founder-photo img { width: 100%; height: 100%; object-fit: cover; }
-        .founder-name { font-size: 28px; font-weight: 900; margin-bottom: 4px; }
-        .founder-role { font-size: 14px; color: var(--gray-400); margin-bottom: 20px; letter-spacing: 0.05em; }
+        .founder-img img { width: 100%; height: 100%; object-fit: cover; }
+        .founder-name { font-size: 30px; font-weight: 900; color: var(--black); margin-bottom: 4px; }
+        .founder-role { font-size: 14px; color: var(--gray-400); font-weight: 600; letter-spacing: 0.05em; margin-bottom: 24px; }
         .founder-bio { font-size: 15px; color: var(--gray-600); line-height: 2.1; }
-        .founder-stats {
-            display: flex; gap: 40px; margin-top: 28px; padding-top: 24px;
-            border-top: 1px solid var(--gray-200);
+        .founder-quote {
+            margin-top: 28px; padding: 24px 28px; border-radius: 12px;
+            background: var(--primary-bg); border-left: 4px solid var(--primary);
+            font-size: 16px; font-weight: 600; color: var(--gray-700); line-height: 1.8;
         }
-        .founder-stat-num { font-size: 28px; font-weight: 900; color: var(--gray-900); }
-        .founder-stat-label { font-size: 12px; color: var(--gray-400); margin-top: 2px; }
+        .founder-nums {
+            display: flex; gap: 48px; margin-top: 32px;
+            padding-top: 28px; border-top: 1px solid var(--gray-200);
+        }
+        .founder-num-val { font-size: 32px; font-weight: 900; color: var(--primary); font-family: 'Inter', sans-serif; }
+        .founder-num-label { font-size: 12px; color: var(--gray-400); font-weight: 600; margin-top: 2px; }
 
         /* Company Info */
-        .info-table {
-            margin-top: 48px; width: 100%; max-width: 640px;
+        .info-card {
+            background: var(--white); border-radius: var(--radius);
+            border: 1px solid var(--gray-100); overflow: hidden;
+            box-shadow: var(--shadow-sm);
         }
         .info-row {
-            display: grid; grid-template-columns: 140px 1fr;
-            padding: 16px 0; border-bottom: 1px solid var(--gray-100);
-            font-size: 15px;
+            display: grid; grid-template-columns: 160px 1fr;
+            padding: 20px 32px; border-bottom: 1px solid var(--gray-50);
+            font-size: 15px; align-items: center;
         }
-        .info-label { color: var(--gray-400); font-weight: 500; }
-        .info-value { color: var(--gray-800); }
+        .info-row:last-child { border-bottom: none; }
+        .info-row:hover { background: var(--gray-50); }
+        .info-label { color: var(--gray-400); font-weight: 600; font-size: 13px; letter-spacing: 0.02em; }
+        .info-value { color: var(--gray-700); font-weight: 500; }
 
-        /* Contact */
-        .contact { background: var(--accent); color: white; text-align: center; }
-        .contact h2 { font-size: clamp(24px, 4vw, 36px); font-weight: 900; margin-bottom: 16px; }
-        .contact p { font-size: 16px; color: rgba(255,255,255,0.5); margin-bottom: 40px; }
-        .contact-btn {
-            display: inline-flex; align-items: center; gap: 8px;
-            padding: 16px 40px; border-radius: 8px; font-size: 16px; font-weight: 700;
-            background: white; color: var(--gray-900); text-decoration: none;
-            transition: all 0.2s;
+        /* CTA */
+        .cta {
+            padding: 100px 0; text-align: center;
+            background: linear-gradient(135deg, var(--gray-800) 0%, var(--black) 100%);
+            color: white; position: relative; overflow: hidden;
         }
-        .contact-btn:hover { background: var(--gray-100); transform: translateY(-1px); }
-        .contact-email {
-            display: block; margin-top: 20px;
-            font-size: 14px; color: rgba(255,255,255,0.4);
+        .cta::before {
+            content: ''; position: absolute; top: -50%; left: -20%;
+            width: 600px; height: 600px; border-radius: 50%;
+            background: radial-gradient(circle, rgba(0,102,255,0.15) 0%, transparent 70%);
+        }
+        .cta h2 {
+            font-size: clamp(28px, 4vw, 42px); font-weight: 900;
+            margin-bottom: 16px; position: relative;
+        }
+        .cta p { font-size: 16px; color: var(--gray-400); margin-bottom: 40px; position: relative; }
+        .cta .btn-primary { font-size: 16px; padding: 16px 40px; }
+        .cta-email {
+            display: block; margin-top: 20px; font-size: 14px;
+            color: var(--gray-500); position: relative;
         }
 
         /* Footer */
         footer {
-            padding: 40px 0; text-align: center;
-            font-size: 12px; color: var(--gray-400);
-            border-top: 1px solid var(--gray-100);
+            padding: 32px 0; text-align: center; font-size: 12px;
+            color: var(--gray-400); border-top: 1px solid var(--gray-100);
         }
 
         /* Responsive */
         @media (max-width: 768px) {
-            .hero { padding: 140px 0 80px; }
-            .business-grid { grid-template-columns: 1fr; }
+            .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+            .hero { padding: 140px 0 60px; }
+            .hero-visual { max-height: 280px; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+            .biz-grid { grid-template-columns: 1fr; }
             .founder-grid { grid-template-columns: 1fr; text-align: center; }
-            .founder-photo { width: 180px; height: 220px; margin: 0 auto; }
-            .founder-stats { justify-content: center; }
-            .info-row { grid-template-columns: 1fr; gap: 4px; }
-            .nav-links a:not(:last-child) { display: none; }
+            .founder-img { max-width: 240px; margin: 0 auto; }
+            .founder-nums { justify-content: center; }
+            .info-row { grid-template-columns: 1fr; gap: 4px; padding: 16px 24px; }
+            .nav-links a:not(.nav-contact) { display: none; }
         }
 
-        /* Animation */
-        .fade-in { opacity: 0; transform: translateY(16px); transition: opacity 0.6s ease, transform 0.6s ease; }
-        .fade-in.visible { opacity: 1; transform: translateY(0); }
+        /* Animations */
+        .fade-up {
+            opacity: 0; transform: translateY(24px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+        .delay-3 { transition-delay: 0.3s; }
     </style>
 </head>
 <body>
 
+<!-- Nav -->
 <nav>
-    <div class="container">
-        <div class="nav-logo">Wonderwall</div>
+    <div class="nav-inner">
+        <div class="nav-logo"><div class="dot"></div>Wonderwall</div>
         <div class="nav-links">
             <a href="#business">事業内容</a>
+            <a href="#founder">代表紹介</a>
             <a href="#company">会社概要</a>
-            <a href="#contact">お問い合わせ</a>
+            <a href="mailto:ken@wonderwall-g.com" class="nav-contact">お問い合わせ</a>
         </div>
     </div>
 </nav>
 
+<!-- Hero -->
 <section class="hero">
-    <div class="container">
-        <div class="hero-label">Wonderwall Inc.</div>
-        <h1>テクノロジーで、<br>壁を超える。</h1>
-        <p>AI・スポーツテック・Web3を軸に、<br>新しい体験と価値を創造します。</p>
-    </div>
-</section>
-
-<section class="mission">
-    <div class="container">
-        <h2>今日の「不可能」を、<br>明日の「当たり前」にする。</h2>
-        <p>私たちは、テクノロジーの力で業界の壁を壊し、誰もがもっと自由に、もっと楽しく生きられる世界を目指しています。</p>
-    </div>
-</section>
-
-<section id="business">
-    <div class="container">
-        <div style="font-size:12px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--gray-400);margin-bottom:16px;">Business</div>
-        <h2 style="font-size:clamp(26px,4vw,40px);font-weight:900;line-height:1.3;margin-bottom:8px;" class="fade-in">事業内容</h2>
-        <p style="font-size:16px;color:var(--gray-500);" class="fade-in">3つの領域で事業を展開しています。</p>
-        <div class="business-grid">
-            <div class="business-card fade-in">
-                <div class="business-tag">AI</div>
-                <h3>Kai — AI伴走サービス</h3>
-                <p>チャットで指示するだけで、AIがリサーチ・資料作成・HP制作・業務自動化まですべて代行。経営者の24時間稼働する右腕として、中小企業のDXを推進します。</p>
-                <a href="https://kenken1130.github.io/kai-lp-v3/" class="business-link" target="_blank">詳しく見る →</a>
+    <div class="hero-inner">
+        <div>
+            <div class="hero-tag"><div class="dot"></div>Wonderwall Inc.</div>
+            <h1>テクノロジーで、<br><em>壁</em>を超える。</h1>
+            <p class="hero-desc">
+                AI・スポーツテック・Web3を軸に、<br>
+                新しい体験と価値を創造するテクノロジーカンパニー。
+            </p>
+            <div class="hero-btns">
+                <a href="#business" class="btn-primary">事業内容を見る →</a>
+                <a href="mailto:ken@wonderwall-g.com" class="btn-secondary">お問い合わせ</a>
             </div>
-            <div class="business-card fade-in">
-                <div class="business-tag">Sports Tech</div>
-                <h3>GOLFIN</h3>
-                <p>ゴルフ×テクノロジーで、プレー体験を革新。GPS機能、NFT、トークンエコシステムを通じて、ゴルフをもっと楽しく、もっとスマートに。</p>
-                <a href="#" class="business-link">Coming Soon</a>
-            </div>
-            <div class="business-card fade-in">
-                <div class="business-tag">AI Talent</div>
-                <h3>VEXUM — AI人材サービス</h3>
-                <p>AI活用のプロフェッショナルを企業にマッチング。戦略設計から実装まで、AI導入を一気通貫でサポートします。</p>
-                <a href="#contact" class="business-link">お問い合わせ →</a>
-            </div>
-            <div class="business-card fade-in">
-                <div class="business-tag">Community</div>
-                <h3>ゴルフコミュニティ</h3>
-                <p>経営者特化型のゴルフコミュニティ。1業種1社限定で、ビジネスとゴルフを融合した新しいネットワーキングの場を提供します。</p>
-                <a href="#contact" class="business-link">お問い合わせ →</a>
+        </div>
+        <div class="hero-visual">
+            <img src="https://kenken1130.github.io/kai-subscription-lp/ken-photo.jpg" alt="Wonderwall" onerror="this.style.display='none'">
+            <div class="overlay">
+                <h3>Build the future.</h3>
+                <p>不可能を、あたりまえに変えていく。</p>
             </div>
         </div>
     </div>
 </section>
 
-<section class="founder-section">
+<!-- Stats -->
+<div class="stats-bar">
     <div class="container">
-        <div style="font-size:12px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--gray-400);margin-bottom:16px;">Founder</div>
-        <h2 style="font-size:clamp(26px,4vw,40px);font-weight:900;line-height:1.3;" class="fade-in">代表メッセージ</h2>
-        <div class="founder-grid fade-in">
-            <div class="founder-photo">
-                <img src="https://kenken1130.github.io/kai-subscription-lp/ken-photo.jpg" alt="Ken Komatsu" onerror="this.parentElement.innerHTML='<div style=display:flex;align-items:center;justify-content:center;height:100%;font-size:48px>👨‍💼</div>'">
+        <div class="stats-grid">
+            <div class="stat-item fade-up">
+                <div class="stat-num">4</div>
+                <div class="stat-label">事業展開数</div>
+            </div>
+            <div class="stat-item fade-up delay-1">
+                <div class="stat-num">17</div>
+                <div class="stat-label">累計事業立ち上げ</div>
+            </div>
+            <div class="stat-item fade-up delay-2">
+                <div class="stat-num">¥10億</div>
+                <div class="stat-label">累計調達額</div>
+            </div>
+            <div class="stat-item fade-up delay-3">
+                <div class="stat-num">2018</div>
+                <div class="stat-label">設立年</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Business -->
+<section class="section" id="business">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-tag"><div class="bar"></div>Business</div>
+            <h2 class="section-title fade-up">事業内容</h2>
+            <p class="section-desc fade-up">テクノロジーの力で、4つの領域から未来を創造しています。</p>
+        </div>
+        <div class="biz-grid">
+            <div class="biz-card fade-up">
+                <div class="biz-card-img ai">⚡</div>
+                <div class="biz-card-body">
+                    <div class="biz-tag ai">AI Service</div>
+                    <h3>Kai — AI伴走サービス</h3>
+                    <p>チャットで指示するだけで、AIがリサーチ・資料作成・HP制作・業務自動化まですべて代行。経営者の24時間稼働する右腕。</p>
+                    <a href="https://kenken1130.github.io/kai-lp-v3/" class="biz-link" target="_blank">詳しく見る →</a>
+                </div>
+            </div>
+            <div class="biz-card fade-up delay-1">
+                <div class="biz-card-img sport">⛳</div>
+                <div class="biz-card-body">
+                    <div class="biz-tag sport">Sports Tech</div>
+                    <h3>GOLFIN</h3>
+                    <p>ゴルフ×テクノロジーで、プレー体験を革新。GPS機能・NFT・トークンエコシステムで、ゴルフをもっとスマートに。</p>
+                    <span class="biz-link" style="color:var(--gray-400)">Coming Soon</span>
+                </div>
+            </div>
+            <div class="biz-card fade-up delay-2">
+                <div class="biz-card-img talent">🧠</div>
+                <div class="biz-card-body">
+                    <div class="biz-tag talent">AI Talent</div>
+                    <h3>VEXUM — AI人材サービス</h3>
+                    <p>AI活用のプロフェッショナルを企業にマッチング。戦略設計から実装まで、AI導入を一気通貫でサポート。</p>
+                    <a href="mailto:ken@wonderwall-g.com" class="biz-link">お問い合わせ →</a>
+                </div>
+            </div>
+            <div class="biz-card fade-up delay-3">
+                <div class="biz-card-img community">🏌️</div>
+                <div class="biz-card-body">
+                    <div class="biz-tag community">Community</div>
+                    <h3>ゴルフコミュニティ</h3>
+                    <p>経営者特化型のゴルフコミュニティ。1業種1社限定で、ビジネスとゴルフを融合した新しいネットワーキング。</p>
+                    <a href="mailto:ken@wonderwall-g.com" class="biz-link">お問い合わせ →</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Founder -->
+<section class="section section-bg" id="founder">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-tag"><div class="bar"></div>Founder</div>
+            <h2 class="section-title fade-up">代表紹介</h2>
+        </div>
+        <div class="founder-grid fade-up">
+            <div class="founder-img">
+                <img src="https://kenken1130.github.io/kai-subscription-lp/ken-photo.jpg" alt="Ken Komatsu" onerror="this.parentElement.innerHTML='<div style=display:flex;align-items:center;justify-content:center;height:100%;font-size:64px;background:var(--gray-100)>👨‍💼</div>'">
             </div>
             <div>
                 <div class="founder-name">小松 賢</div>
                 <div class="founder-role">Founder & CEO</div>
                 <div class="founder-bio">
-                    「壁があるなら、壊せばいい。」<br><br>
-                    私はこれまで17の事業に挑戦してきました。成功も失敗も、すべてが今の糧になっています。<br><br>
-                    テクノロジーは、人の可能性を広げる最強のツール。AIで経営者の右腕を作り、スポーツテックで新しい体験を生み、Web3で未来の経済圏を描く。<br><br>
-                    Wonderwallは「壁」という名の会社ですが、壁を作る会社ではありません。壁を超える会社です。
+                    17の事業を立ち上げ、約10億円の資金調達を実現した連続起業家。<br><br>
+                    スポーツテック、AI、Web3を横断する発想力と、どんな逆境でも諦めない行動力で、「不可能」を「あたりまえ」に変えてきました。<br><br>
+                    「テクノロジーは人の可能性を広げる最強のツール。」その信念のもと、AIで経営者の右腕を作り、スポーツテックで新しい体験を創造します。
                 </div>
-                <div class="founder-stats">
+                <div class="founder-quote">
+                    「壁があるなら、壊せばいい。<br>
+                    それが、Wonderwallの名前の由来です。」
+                </div>
+                <div class="founder-nums">
                     <div>
-                        <div class="founder-stat-num">17</div>
-                        <div class="founder-stat-label">事業立ち上げ</div>
+                        <div class="founder-num-val">17</div>
+                        <div class="founder-num-label">事業立ち上げ</div>
                     </div>
                     <div>
-                        <div class="founder-stat-num">10億</div>
-                        <div class="founder-stat-label">累計調達額</div>
+                        <div class="founder-num-val">¥10億</div>
+                        <div class="founder-num-label">累計調達額</div>
                     </div>
                     <div>
-                        <div class="founder-stat-num">2018</div>
-                        <div class="founder-stat-label">設立年</div>
+                        <div class="founder-num-val">8年</div>
+                        <div class="founder-num-label">起業歴</div>
                     </div>
                 </div>
             </div>
@@ -270,11 +447,14 @@
     </div>
 </section>
 
-<section id="company">
+<!-- Company -->
+<section class="section" id="company">
     <div class="container">
-        <div style="font-size:12px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--gray-400);margin-bottom:16px;">Company</div>
-        <h2 style="font-size:clamp(26px,4vw,40px);font-weight:900;line-height:1.3;margin-bottom:8px;" class="fade-in">会社概要</h2>
-        <div class="info-table fade-in">
+        <div class="section-header">
+            <div class="section-tag"><div class="bar"></div>Company</div>
+            <h2 class="section-title fade-up">会社概要</h2>
+        </div>
+        <div class="info-card fade-up">
             <div class="info-row">
                 <div class="info-label">会社名</div>
                 <div class="info-value">ワンダーウォール株式会社</div>
@@ -300,6 +480,10 @@
                 <div class="info-value">AI伴走サービス / スポーツテック / AI人材 / コミュニティ運営</div>
             </div>
             <div class="info-row">
+                <div class="info-label">URL</div>
+                <div class="info-value">wonder-wall.tech</div>
+            </div>
+            <div class="info-row">
                 <div class="info-label">メール</div>
                 <div class="info-value">ken@wonderwall-g.com</div>
             </div>
@@ -307,15 +491,17 @@
     </div>
 </section>
 
-<section id="contact" class="contact">
+<!-- CTA -->
+<section class="cta">
     <div class="container">
-        <h2>お問い合わせ</h2>
-        <p>事業に関するご質問・ご相談はお気軽にご連絡ください。</p>
-        <a href="https://t.me/ken1130" class="contact-btn">お問い合わせ →</a>
-        <span class="contact-email">ken@wonderwall-g.com</span>
+        <h2 class="fade-up">お気軽にご連絡ください</h2>
+        <p class="fade-up">事業に関するご質問・ご相談・取材のお問い合わせ</p>
+        <a href="mailto:ken@wonderwall-g.com" class="btn-primary fade-up">お問い合わせ →</a>
+        <span class="cta-email fade-up">ken@wonderwall-g.com</span>
     </div>
 </section>
 
+<!-- Footer -->
 <footer>
     <div class="container">
         <p>© 2026 Wonderwall Inc. All rights reserved.</p>
@@ -325,10 +511,10 @@
 <script>
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
+        if (entry.isIntersecting) { entry.target.classList.add('visible'); }
     });
-}, { threshold: 0.1 });
-document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+}, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 </script>
 </body>
 </html>
