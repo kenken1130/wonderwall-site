@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wonderwall Inc. — テクノロジーで、壁を超える。</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --black: #0a0a0a;
+            --white: #ffffff;
+            --gray-50: #fafafa;
+            --gray-100: #f5f5f5;
+            --gray-200: #e5e5e5;
+            --gray-400: #a3a3a3;
+            --gray-500: #737373;
+            --gray-600: #525252;
+            --gray-800: #262626;
+            --gray-900: #171717;
+            --accent: #0F172A;
+            --blue: #2563EB;
+        }
+        *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Noto Sans JP', 'Inter', -apple-system, sans-serif;
+            background: var(--white);
+            color: var(--gray-900);
+            line-height: 1.9;
+            -webkit-font-smoothing: antialiased;
+        }
+        .container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+        section { padding: 100px 0; }
+
+        /* Nav */
+        nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            padding: 20px 0; background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(16px); border-bottom: 1px solid var(--gray-100);
+        }
+        nav .container { display: flex; align-items: center; justify-content: space-between; }
+        .nav-logo {
+            font-size: 18px; font-weight: 900; letter-spacing: 0.05em;
+            color: var(--gray-900); text-transform: uppercase;
+        }
+        .nav-links { display: flex; align-items: center; gap: 36px; }
+        .nav-links a {
+            font-size: 13px; color: var(--gray-500); text-decoration: none;
+            font-weight: 500; letter-spacing: 0.05em; transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--gray-900); }
+
+        /* Hero */
+        .hero {
+            padding: 200px 0 120px; text-align: center;
+            background: linear-gradient(180deg, var(--gray-50) 0%, var(--white) 100%);
+        }
+        .hero-label {
+            font-size: 12px; font-weight: 700; letter-spacing: 0.2em;
+            text-transform: uppercase; color: var(--gray-400); margin-bottom: 24px;
+        }
+        .hero h1 {
+            font-size: clamp(36px, 7vw, 64px); font-weight: 900;
+            line-height: 1.2; letter-spacing: -0.02em;
+            margin-bottom: 24px;
+        }
+        .hero p {
+            font-size: 17px; color: var(--gray-500); max-width: 520px;
+            margin: 0 auto; line-height: 1.9;
+        }
+
+        /* Mission */
+        .mission { background: var(--accent); color: white; text-align: center; }
+        .mission h2 { font-size: clamp(24px, 4vw, 36px); font-weight: 900; margin-bottom: 20px; line-height: 1.4; }
+        .mission p { font-size: 16px; color: rgba(255,255,255,0.6); max-width: 600px; margin: 0 auto; line-height: 2; }
+
+        /* Business */
+        .business-grid {
+            display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px;
+            margin-top: 56px;
+        }
+        .business-card {
+            padding: 48px 36px; border-radius: 16px;
+            background: var(--gray-50); border: 1px solid var(--gray-100);
+            transition: all 0.3s;
+        }
+        .business-card:hover { background: white; border-color: var(--gray-200); box-shadow: 0 8px 32px rgba(0,0,0,0.06); }
+        .business-tag {
+            display: inline-block; font-size: 11px; font-weight: 700;
+            letter-spacing: 0.1em; text-transform: uppercase;
+            color: var(--blue); margin-bottom: 16px;
+            padding: 4px 12px; background: rgba(37,99,235,0.06); border-radius: 4px;
+        }
+        .business-card h3 { font-size: 22px; font-weight: 900; margin-bottom: 12px; }
+        .business-card p { font-size: 14px; color: var(--gray-500); line-height: 1.9; }
+        .business-link {
+            display: inline-flex; align-items: center; gap: 6px;
+            margin-top: 20px; font-size: 14px; font-weight: 600;
+            color: var(--blue); text-decoration: none;
+        }
+        .business-link:hover { text-decoration: underline; }
+
+        /* Founder */
+        .founder-section { background: var(--gray-50); }
+        .founder-grid {
+            display: grid; grid-template-columns: 240px 1fr; gap: 48px;
+            align-items: center; margin-top: 48px;
+        }
+        .founder-photo {
+            width: 240px; height: 300px; border-radius: 12px; overflow: hidden;
+            background: var(--gray-200);
+        }
+        .founder-photo img { width: 100%; height: 100%; object-fit: cover; }
+        .founder-name { font-size: 28px; font-weight: 900; margin-bottom: 4px; }
+        .founder-role { font-size: 14px; color: var(--gray-400); margin-bottom: 20px; letter-spacing: 0.05em; }
+        .founder-bio { font-size: 15px; color: var(--gray-600); line-height: 2.1; }
+        .founder-stats {
+            display: flex; gap: 40px; margin-top: 28px; padding-top: 24px;
+            border-top: 1px solid var(--gray-200);
+        }
+        .founder-stat-num { font-size: 28px; font-weight: 900; color: var(--gray-900); }
+        .founder-stat-label { font-size: 12px; color: var(--gray-400); margin-top: 2px; }
+
+        /* Company Info */
+        .info-table {
+            margin-top: 48px; width: 100%; max-width: 640px;
+        }
+        .info-row {
+            display: grid; grid-template-columns: 140px 1fr;
+            padding: 16px 0; border-bottom: 1px solid var(--gray-100);
+            font-size: 15px;
+        }
+        .info-label { color: var(--gray-400); font-weight: 500; }
+        .info-value { color: var(--gray-800); }
+
+        /* Contact */
+        .contact { background: var(--accent); color: white; text-align: center; }
+        .contact h2 { font-size: clamp(24px, 4vw, 36px); font-weight: 900; margin-bottom: 16px; }
+        .contact p { font-size: 16px; color: rgba(255,255,255,0.5); margin-bottom: 40px; }
+        .contact-btn {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 16px 40px; border-radius: 8px; font-size: 16px; font-weight: 700;
+            background: white; color: var(--gray-900); text-decoration: none;
+            transition: all 0.2s;
+        }
+        .contact-btn:hover { background: var(--gray-100); transform: translateY(-1px); }
+        .contact-email {
+            display: block; margin-top: 20px;
+            font-size: 14px; color: rgba(255,255,255,0.4);
+        }
+
+        /* Footer */
+        footer {
+            padding: 40px 0; text-align: center;
+            font-size: 12px; color: var(--gray-400);
+            border-top: 1px solid var(--gray-100);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero { padding: 140px 0 80px; }
+            .business-grid { grid-template-columns: 1fr; }
+            .founder-grid { grid-template-columns: 1fr; text-align: center; }
+            .founder-photo { width: 180px; height: 220px; margin: 0 auto; }
+            .founder-stats { justify-content: center; }
+            .info-row { grid-template-columns: 1fr; gap: 4px; }
+            .nav-links a:not(:last-child) { display: none; }
+        }
+
+        /* Animation */
+        .fade-in { opacity: 0; transform: translateY(16px); transition: opacity 0.6s ease, transform 0.6s ease; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="container">
+        <div class="nav-logo">Wonderwall</div>
+        <div class="nav-links">
+            <a href="#business">事業内容</a>
+            <a href="#company">会社概要</a>
+            <a href="#contact">お問い合わせ</a>
+        </div>
+    </div>
+</nav>
+
+<section class="hero">
+    <div class="container">
+        <div class="hero-label">Wonderwall Inc.</div>
+        <h1>テクノロジーで、<br>壁を超える。</h1>
+        <p>AI・スポーツテック・Web3を軸に、<br>新しい体験と価値を創造します。</p>
+    </div>
+</section>
+
+<section class="mission">
+    <div class="container">
+        <h2>今日の「不可能」を、<br>明日の「当たり前」にする。</h2>
+        <p>私たちは、テクノロジーの力で業界の壁を壊し、誰もがもっと自由に、もっと楽しく生きられる世界を目指しています。</p>
+    </div>
+</section>
+
+<section id="business">
+    <div class="container">
+        <div style="font-size:12px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--gray-400);margin-bottom:16px;">Business</div>
+        <h2 style="font-size:clamp(26px,4vw,40px);font-weight:900;line-height:1.3;margin-bottom:8px;" class="fade-in">事業内容</h2>
+        <p style="font-size:16px;color:var(--gray-500);" class="fade-in">3つの領域で事業を展開しています。</p>
+        <div class="business-grid">
+            <div class="business-card fade-in">
+                <div class="business-tag">AI</div>
+                <h3>Kai — AI伴走サービス</h3>
+                <p>チャットで指示するだけで、AIがリサーチ・資料作成・HP制作・業務自動化まですべて代行。経営者の24時間稼働する右腕として、中小企業のDXを推進します。</p>
+                <a href="https://kenken1130.github.io/kai-lp-v3/" class="business-link" target="_blank">詳しく見る →</a>
+            </div>
+            <div class="business-card fade-in">
+                <div class="business-tag">Sports Tech</div>
+                <h3>GOLFIN</h3>
+                <p>ゴルフ×テクノロジーで、プレー体験を革新。GPS機能、NFT、トークンエコシステムを通じて、ゴルフをもっと楽しく、もっとスマートに。</p>
+                <a href="#" class="business-link">Coming Soon</a>
+            </div>
+            <div class="business-card fade-in">
+                <div class="business-tag">AI Talent</div>
+                <h3>VEXUM — AI人材サービス</h3>
+                <p>AI活用のプロフェッショナルを企業にマッチング。戦略設計から実装まで、AI導入を一気通貫でサポートします。</p>
+                <a href="#contact" class="business-link">お問い合わせ →</a>
+            </div>
+            <div class="business-card fade-in">
+                <div class="business-tag">Community</div>
+                <h3>ゴルフコミュニティ</h3>
+                <p>経営者特化型のゴルフコミュニティ。1業種1社限定で、ビジネスとゴルフを融合した新しいネットワーキングの場を提供します。</p>
+                <a href="#contact" class="business-link">お問い合わせ →</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="founder-section">
+    <div class="container">
+        <div style="font-size:12px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--gray-400);margin-bottom:16px;">Founder</div>
+        <h2 style="font-size:clamp(26px,4vw,40px);font-weight:900;line-height:1.3;" class="fade-in">代表メッセージ</h2>
+        <div class="founder-grid fade-in">
+            <div class="founder-photo">
+                <img src="https://kenken1130.github.io/kai-subscription-lp/ken-photo.jpg" alt="Ken Komatsu" onerror="this.parentElement.innerHTML='<div style=display:flex;align-items:center;justify-content:center;height:100%;font-size:48px>👨‍💼</div>'">
+            </div>
+            <div>
+                <div class="founder-name">小松 賢</div>
+                <div class="founder-role">Founder & CEO</div>
+                <div class="founder-bio">
+                    「壁があるなら、壊せばいい。」<br><br>
+                    私はこれまで17の事業に挑戦してきました。成功も失敗も、すべてが今の糧になっています。<br><br>
+                    テクノロジーは、人の可能性を広げる最強のツール。AIで経営者の右腕を作り、スポーツテックで新しい体験を生み、Web3で未来の経済圏を描く。<br><br>
+                    Wonderwallは「壁」という名の会社ですが、壁を作る会社ではありません。壁を超える会社です。
+                </div>
+                <div class="founder-stats">
+                    <div>
+                        <div class="founder-stat-num">17</div>
+                        <div class="founder-stat-label">事業立ち上げ</div>
+                    </div>
+                    <div>
+                        <div class="founder-stat-num">10億</div>
+                        <div class="founder-stat-label">累計調達額</div>
+                    </div>
+                    <div>
+                        <div class="founder-stat-num">2018</div>
+                        <div class="founder-stat-label">設立年</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="company">
+    <div class="container">
+        <div style="font-size:12px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--gray-400);margin-bottom:16px;">Company</div>
+        <h2 style="font-size:clamp(26px,4vw,40px);font-weight:900;line-height:1.3;margin-bottom:8px;" class="fade-in">会社概要</h2>
+        <div class="info-table fade-in">
+            <div class="info-row">
+                <div class="info-label">会社名</div>
+                <div class="info-value">ワンダーウォール株式会社</div>
+            </div>
+            <div class="info-row">
+                <div class="info-label">英文社名</div>
+                <div class="info-value">Wonderwall Inc.</div>
+            </div>
+            <div class="info-row">
+                <div class="info-label">代表者</div>
+                <div class="info-value">代表取締役 小松 賢</div>
+            </div>
+            <div class="info-row">
+                <div class="info-label">設立</div>
+                <div class="info-value">2018年</div>
+            </div>
+            <div class="info-row">
+                <div class="info-label">所在地</div>
+                <div class="info-value">東京都港区</div>
+            </div>
+            <div class="info-row">
+                <div class="info-label">事業内容</div>
+                <div class="info-value">AI伴走サービス / スポーツテック / AI人材 / コミュニティ運営</div>
+            </div>
+            <div class="info-row">
+                <div class="info-label">メール</div>
+                <div class="info-value">ken@wonderwall-g.com</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="contact" class="contact">
+    <div class="container">
+        <h2>お問い合わせ</h2>
+        <p>事業に関するご質問・ご相談はお気軽にご連絡ください。</p>
+        <a href="https://t.me/ken1130" class="contact-btn">お問い合わせ →</a>
+        <span class="contact-email">ken@wonderwall-g.com</span>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <p>© 2026 Wonderwall Inc. All rights reserved.</p>
+    </div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
